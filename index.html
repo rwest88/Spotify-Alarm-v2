@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Ubuntu" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha18/css/tempusdominus-bootstrap-4.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <title>JamStart</title>
+</head>
+
+<body>
+
+  <div class="container text-center" id="time-greet">
+    <div class="jumbotron">
+      <span id="greet" class="lead">Good Evening!</span>
+      <br/>
+      <span id="time" class="display-4">9:00 PM</span>
+    </div>
+  </div>
+
+  <div class="container text-center" id="weather-greet">
+    <div id="weather-container">
+      <p>
+        <span id="condition-icon">
+          <img id="weather-icon" src="http://openweathermap.org/img/w/10d.png">
+        </span>
+        <br>
+        <span id="condition" class="lead">It's something out.</span>
+      </p>
+      <p>
+        <span id="temp-input" class="display-1">&#8457;</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="alert alert-success alert-dismissible fade" role="alert" id="alarm-set-msg">
+    <strong>Alarm has been set!</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="container mb-4 text-center" id="setalarm-form">
+    <p>
+      <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="set-alarm-btn">
+        Set Alarm and Destination
+      </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body" id="form-setting">
+        <form id="alarm-form">
+          <div class="form-group">
+            <label for="alarm-clock">Set Alarm:</label>
+            <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+              <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker3" required>
+              <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fas fa-clock"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="end-address-input" class="input-style">Ending Address:</label>
+            <input type="address" class="form-control" id="end-address-input">
+          </div>
+          <br>
+          <button class="btn btn-info btn-block" type="submit" id="submit-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-5 mb-4 text-center" id="traffic-time">
+    <div class="traffic-container">
+      <p class="h4">Estimated time to destination:
+        <p>
+          <span id="destination-time" class="h4">15 minutes</span>
+        </p>
+      </p>
+      <div class="container py-5 mb-4" ID="music-section">
+        <div class="row music" id="music-icon">
+          <div class="col-sm-4" id="youtube-widget">
+            <span id="music-data"></span>
+          </div>
+          <div class="col-sm-4">
+            <p>
+              <span id="icon-input">
+                <i class="fas fa-music mr-3"></i>
+              </span>
+            </p>
+          </div>
+          <div class="col-sm-4" id="spotify-widget">
+            <span id="music-data"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_bXSY_7Ssaeg_p4mCtDVFEAn8iCxk1bY"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha18/js/tempusdominus-bootstrap-4.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <script src="assets/javascript/app.js"></script>
+
+</body>
+
+</html>
