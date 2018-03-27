@@ -5,6 +5,7 @@ var hack = null; // for testing
 //............................................................................
 
 if (navigator.geolocation) {
+  setTimeout(function() {
   navigator.geolocation.getCurrentPosition(function(position) {
     pos = {
       lat: Math.round(position.coords.latitude * 1000000) / 1000000,
@@ -256,6 +257,7 @@ if (navigator.geolocation) {
     runAPIs();
 
   });
+  }, 100);
 }
 
 
