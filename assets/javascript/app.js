@@ -1,11 +1,10 @@
-var hack = null; // for testing
+var hack = null; // for testing. simply set this in console to one of the API's various weather codes.
 
-//............................................................................
-// Geolocation (app will not work without consent)
-//............................................................................
+//................................................................................................................
+// Geolocation (app will not work without consent, or more importantly, browser support (needs fix for iPhone)
+//................................................................................................................
 
 if (navigator.geolocation) {
-  setTimeout(function() {
   navigator.geolocation.getCurrentPosition(function(position) {
     pos = {
       lat: Math.round(position.coords.latitude * 1000000) / 1000000,
@@ -40,7 +39,7 @@ if (navigator.geolocation) {
     var spotify;
 
     var playing = false;
-    var meow = false;
+    var autoplayAppended = false;
     var autoplay = "";
 
     var greeting;
@@ -58,7 +57,7 @@ if (navigator.geolocation) {
     var timeHours;
 
     var intervalSeconds = setInterval(updateTime, 1000);
-    var intervalTenMinutes = setInterval(updateWeather, 15000); //600000
+    var intervalTenMinutes = setInterval(updateWeather, 30000); // for testing. permanent will be 600000 (10 minutes) 
 
     //...............................................................................
     // Functions to run at regular intervals
@@ -131,7 +130,7 @@ if (navigator.geolocation) {
       evt.preventDefault();
       $collapsible.collapse('hide');
       $('#alarm-set-msg').addClass('show');
-      setTimeout(function() {$('#alarm-set-msg').removeClass('show')}, 3000);
+      setTimeout(function() {$('#alarm-set-msg').removeClass('show')}, 5000);
       alarmTime = ($('.datetimepicker-input').val());
       database.ref().set(alarmTime);
       if (alarmTime.charAt(1) == ":") {
@@ -140,7 +139,10 @@ if (navigator.geolocation) {
       alarmHours = alarmTime.slice(0, 2);
       alarmMinutes = alarmTime.slice(3, 5);
       alarmAMPM = alarmTime.slice(6, 8);
-      
+      // allow multiple alarm sets
+      playing = false;
+      autoplay = "";
+      autoplayAppended = false;
     });
 
     //...........................................................
@@ -166,7 +168,7 @@ if (navigator.geolocation) {
       var drizzleMusicSpotify = "https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWZ7mSWCFIT7v";
       var cloudyMusicSpotify = "https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWVV27DiNWxkR";
       var atmosMusicSpotify = "https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX79Y9Kr2M2tM";
-      var extremeMusic = "https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWU6kYEHaDaGA";
+      var extremeMusicSpotify = "https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWU6kYEHaDaGA";
       var stormMusicSpotify = "https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX2pSTOxoPbx9";
 
       $.ajax({
@@ -175,7 +177,7 @@ if (navigator.geolocation) {
       }).then(function(response) {
         console.log(response);
         var weather = response.weather[0].id;
-        if (hack !== null) { // for testing
+        if (hack !== null) { // for testing different weather codes
           weather = hack;
         }
         console.log(weather);
@@ -185,7 +187,7 @@ if (navigator.geolocation) {
         if (weather >= 500 && weather <= 531) {
           youTube.attr("src", rainyMusic);
           spotify.attr("src", rainyMusicSpotify);
-          if (timeHours >= 20 || timeHours <= 7) {
+          if (timeHours >= 20 || timeHours <= 7) { // have to repeat this conditional to prevent background flicker during night time
             $('body').css({'background-image':'url(assets/images/nighttime.jpg)'});
           } else {$('body').css({'background-image':'url(assets/images/rainy.jpg)'});}
 
@@ -242,11 +244,11 @@ if (navigator.geolocation) {
         $('#weather-icon').attr('src', `https://openweathermap.org/img/w/${response.weather[0].icon}.png`);
         $('#temp-input').html(Math.round(response.main.temp) + '&#8457');
         $('#condition').text('Condition: ' + response.weather[0].description);
-        if (autoplay == "") {
+        if (autoplay == "") {  // append a new player everytime the weather updates (10 minutes for actual use, 30 seconds for presentation)
           $('#youtube-widget').empty().append(youTube);
           $('#spotify-widget').empty().append(spotify);
-        } else if (!meow) {
-          meow = true;
+        } else if (!autoplayAppended) {  // append a new player with autoplay only once
+          autoplayAppended = true;
           $('#youtube-widget').empty().append(youTube);
           $('#spotify-widget').empty().append(spotify);
         }
@@ -254,10 +256,7 @@ if (navigator.geolocation) {
     }
     updateTime();
     updateWeather();
-    runAPIs();
-
   });
-  }, 100);
 }
 
 
