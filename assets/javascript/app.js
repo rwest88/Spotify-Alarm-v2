@@ -77,7 +77,7 @@ if (navigator.geolocation) {
       if (timeHours >= 0 && timeHours < 4) {greeting = greetings[3]}
 
       if (timeHours >= 20 || timeHours <= 7) {
-        $('body').css({'background-image':'url(assets/images/nighttime.jpg'});
+        $('body').css({'background-image':'url(assets/images/nighttime.jpg)'});
       }
 
       if (timeHours > 11) {
@@ -185,56 +185,56 @@ if (navigator.geolocation) {
           youTube.attr("src", rainyMusic);
           spotify.attr("src", rainyMusicSpotify);
           if (timeHours >= 20 || timeHours <= 7) {
-            $('body').css({'background-image':'url(assets/images/nighttime.jpg'});
+            $('body').css({'background-image':'url(assets/images/nighttime.jpg)'});
           } else {$('body').css({'background-image':'url(assets/images/rainy.jpg)'});}
 
         } else if (weather === 800 || weather === 801 || (weather >= 951 && weather <= 953)) {
           youTube.attr("src", sunnyMusic);
           spotify.attr("src", sunnyMusicSpotify);
           if (timeHours >= 20 || timeHours <= 7) {
-            $('body').css({'background-image':'url(assets/images/nighttime.jpg'});
+            $('body').css({'background-image':'url(assets/images/nighttime.jpg)'});
           } else {$('body').css({'background-image':'url(assets/images/sunny.jpg)'});}
 
         } else if (weather >= 600 && weather <= 622) {
           youTube.attr("src", snowMusic);
           spotify.attr("src", snowMusicSpotify);
           if (timeHours >= 20 || timeHours <= 7) {
-            $('body').css({'background-image':'url(assets/images/nighttime.jpg'});
+            $('body').css({'background-image':'url(assets/images/nighttime.jpg)'});
           } else {$('body').css({'background-image':'url(assets/images/snowy.jpg)'});}
 
         } else if (weather >= 300 && weather <= 321) {
           youTube.attr("src", drizzleMusic);
           spotify.attr("src", drizzleMusicSpotify);
           if (timeHours >= 20 || timeHours <= 7) {
-            $('body').css({'background-image':'url(assets/images/nighttime.jpg'});
+            $('body').css({'background-image':'url(assets/images/nighttime.jpg)'});
           } else {$('body').css({'background-image':'url(assets/images/rainy.jpg)'});}
 
         } else if (weather >= 802 && weather <= 804) {
           youTube.attr("src", cloudyMusic);
           spotify.attr("src", cloudyMusicSpotify);
           if (timeHours >= 20 || timeHours <= 7) {
-            $('body').css({'background-image':'url(assets/images/nighttime.jpg'});
+            $('body').css({'background-image':'url(assets/images/nighttime.jpg)'});
           } else {$('body').css({'background-image':'url(assets/images/cloudy.jpg)'});}
 
         } else if ((weather >= 701 && weather <= 721) || weather === 741) {
           youTube.attr("src", atmosMusic);
           spotify.attr("src", atmosMusicSpotify);
           if (timeHours >= 20 || timeHours <= 7) {
-            $('body').css({'background-image':'url(assets/images/nighttime.jpg'});
+            $('body').css({'background-image':'url(assets/images/nighttime.jpg)'});
           } else {$('body').css({'background-image':'url(assets/images/cloudy.jpg)'});}
 
         } else if (weather === 731 || (weather >= 751 && weather <= 781) || (weather >= 900 && weather <= 902) || weather === 906 || (weather >= 957 && weather <= 962)) {
           youTube.attr("src", extremeMusic);
           spotify.attr("src", extremeMusicSpotify);
           if (timeHours >= 20 || timeHours <= 7) {
-            $('body').css({'background-image':'url(assets/images/nighttime.jpg'});
+            $('body').css({'background-image':'url(assets/images/nighttime.jpg)'});
           } else {$('body').css({'background-image':'url(assets/images/thunder.jpg)'});}
 
         } else if (weather >= 200 && weather <= 232) {
           youTube.attr("src", stormMusic);
           spotify.attr("src", stormMusicSpotify);
           if (timeHours >= 20 || timeHours <= 7) {
-            $('body').css({'background-image':'url(assets/images/nighttime.jpg'});
+            $('body').css({'background-image':'url(assets/images/nighttime.jpg)'});
           } else {$('body').css({'background-image':'url(assets/images/thunder.jpg)'});}
 
         }
